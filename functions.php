@@ -224,3 +224,60 @@ echo '</p>';
 echo '</div>'; 
 echo '</footer>'; 
 }
+// SLIDER FUNCTION
+
+function sliderSection($slides) {
+    echo '<section class="slider_section">';
+    echo '<div class="dot_design">';
+    echo '<img src="images/dots.png" alt="">';
+    echo '</div>';
+    echo '<div id="customCarousel1" class="carousel slide" data-ride="carousel">';
+    echo '<div class="carousel-inner">';
+
+    foreach ($slides as $index => $slide) {
+        $activeClass = $index === 0 ? 'active' : '';
+        echo '<div class="carousel-item ' . $activeClass . '">';
+        echo '<div class="container">';
+        echo '<div class="row">';
+        echo '<div class="col-md-6">';
+        echo '<div class="detail-box">';
+        echo '<div class="play_btn">';
+        echo '<button>';
+        echo '<i class="fa fa-play" aria-hidden="true"></i>';
+        echo '</button>';
+        echo '</div>';
+        echo '<h1>' . htmlspecialchars($slide['title']) . '<br>';
+        echo '<span>' . htmlspecialchars($slide['subtitle']) . '</span>';
+        echo '</h1>';
+        echo '<p>' . htmlspecialchars($slide['description']) . '</p>';
+        echo '<a href="' . htmlspecialchars($slide['link']) . '">Contact Us</a>';
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '<div class="col-md-6">';
+        echo '<div class="img-box">';
+        echo '<img src="' . htmlspecialchars($slide['image']) . '" alt="">';
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '</div>'; 
+    }
+
+    echo '</div>'; 
+    echo '<div class="carousel_btn-box">';
+    echo '<a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">';
+    echo '<img src="images/prev.png" alt="">';
+    echo '<span class="sr-only">Previous</span>';
+    echo '</a>';
+    echo '<a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">';
+    echo '<img src="images/next.png" alt="">';
+    echo '<span class="sr-only">Next</span>';
+    echo '</a>';
+    echo '</div>'; 
+    echo '</div>'; 
+    echo '</section>';
+}
+
+
+
+?>

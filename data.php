@@ -103,3 +103,29 @@ $fonts = [
   'span' =>  ' demo@gmail.com'
 ]
 ];
+
+$slides = [
+    [
+        'title' => 'Mico',
+        'subtitle' => 'Hospital',
+        'description' => 'when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to',
+        'link' => '#',
+        'image' => 'images/slider-img.jpg'
+    ],
+    [
+        'title' => 'Another Slide',
+        'subtitle' => 'Clinic',
+        'description' => 'This is another slide with different content.',
+        'link' => '#',
+        'image' => 'images/another-img.jpg'
+    ],
+    [
+        'title' => 'Health Care',
+        'subtitle' => 'Center',
+        'description' => 'Providing high-quality healthcare services.',
+        'link' => '#',
+        'image' => 'images/healthcare-img.jpg'
+    ]
+];
+
+?>
