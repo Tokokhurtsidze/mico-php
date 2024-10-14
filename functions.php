@@ -10,6 +10,22 @@ function img($src) {
     return $src;
 };
 
+// function input($type, $placeholder = '', $id = '') {
+//     echo "<input type='$type' placeholder=\"$placeholder\" id=\"$id\" />";
+// }
+
+// function input($type, $placeholder = '', $id = '', $required = false) {
+   
+//     $requiredAttribute = $required ? 'required' : '';
+    
+//     echo "<input type='$type' placeholder=\"$placeholder\" id=\"$id\" $requiredAttribute />";
+// }
+
+function input($type, $placeholder = '', $id = '', $class = '', $required = false) {
+    $requiredAttribute = $required ? 'required' : '';
+    
+    echo "<input type='$type' placeholder=\"$placeholder\" id=\"$id\" class=\"$class\" $requiredAttribute />";
+};
 
 function h1($value, $class = '') {
     echo "<h1 class='$class'>" . $value . '</h1>';
@@ -61,6 +77,10 @@ function ul($value, $class = '') {
 function li($value, $class = '') {
     echo "<li class='$class'>" . $value . '</li>';
     return $value;
+};
+
+function h2WithSpan($text, $spanText, $spanClass = '', $h2Class = '') {
+    echo "<h2 class=\"$h2Class\">$text <span class=\"$spanClass\">$spanText</span></h2>";
 };
 
 // HEADER FUNCTION
@@ -224,3 +244,269 @@ echo '</p>';
 echo '</div>'; 
 echo '</footer>'; 
 }
+
+
+
+function testimonial_section($testimonials) {
+    echo '
+    <!-- client section -->
+    <section class="client_section layout_padding">
+        <div class="container">
+            <div class="heading_container">
+                <h2><span>Testimonial</span></h2>
+            </div>
+        </div>
+        <div class="container px-0">
+            <div id="customCarousel2" class="carousel carousel-fade" data-ride="carousel">
+                <div class="carousel-inner">';
+                
+                foreach ($testimonials as $index => $testimonial) {
+                    echo '
+                    <div class="carousel-item ' . ($index === 0 ? 'active' : '') . '">
+                        <div class="box">
+                            <div class="client_info">
+                                <div class="client_name">
+                                    <h5>' . $testimonial['name'] . '</h5>
+                                    <h6>' . $testimonial['title'] . '</h6>
+                                </div>
+                                <i class="fa fa-quote-left" aria-hidden="true"></i>
+                            </div>
+                            <p>' . $testimonial['quote'] . '</p>
+                        </div>
+                    </div>';
+                }
+    
+    echo '
+                </div>
+                <div class="carousel_btn-box">
+                    <a class="carousel-control-prev" href="#customCarousel2" role="button" data-slide="prev">
+                        <i class="fa fa-angle-left" aria-hidden="true"></i>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#customCarousel2" role="button" data-slide="next">
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end client section -->
+    ';
+}
+
+
+
+function treatment_section($treatments) {
+    echo '
+    <!-- Dynamic treatment section -->
+    <section class="treatment_section layout_padding">
+        <div class="side_img">';
+            img('images/treatment-side-img.jpg');
+    echo '
+        </div>
+        <div class="container">
+            <div class="heading_container heading_center">';
+                h2('Hospital <span>Treatment</span>');
+    echo '
+            </div>
+            <div class="row">';
+                foreach ($treatments as $treatment) {
+                    echo '
+                    <div class="col-md-6 col-lg-3">
+                        <div class="box">
+                            <div class="img-box">';
+                                img($treatment['image']);
+                    echo '
+                            </div>
+                            <div class="detail-box">';
+                                h4($treatment['title']);
+                                p($treatment['description']);
+                                a('Read More', $treatment['link']);
+                    echo '
+                            </div>
+                        </div>
+                    </div>';
+                }
+    echo '
+            </div>
+        </div>
+    </section>
+    <!-- end treatment section -->
+    ';
+};
+
+
+function doctors($doctors, $socials) {
+    echo '<section class="team_section layout_padding">';
+    echo '<div class="container">';
+    echo '<div class="heading_container heading_center">';
+    echo '<h2>' . "Our" . ' ' . '<span>' . "Doctors" . '</span>' . '</h2>';
+    echo '</div>';
+    echo '<div class="carousel-wrap">';
+    echo '<div class="owl-carousel team_carousel">';
+    
+    foreach ($doctors as $doctor) {
+        echo '<div class="item">';
+        echo '<div class="box">';
+        echo '<div class="img-box">';
+        echo '<img src="' . $doctor['image'] . '" alt="' . $doctor['name'] . '">';
+        echo '</div>';
+        
+        echo '<div class="detail-box">';
+        echo '<h5>' . $doctor['name'] . '</h5>';
+        echo '<h6>' . $doctor['educ'] . '</h6>';
+        
+        echo '<div class="social_box">';
+        foreach ($socials as $social) {
+            echo '<a href="' . $social['link'] . '">' . $social['icon'] . '</a>';
+        }
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    }
+
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</section>';
+};
+
+
+function contact($forms) {
+    echo '<section class="contact_section layout_padding-bottom">';
+    echo '<div class="container">';
+    echo '<div class="heading_container">';
+    h2('Get In Touch');
+    echo '</div>';
+    echo '<div class="row">';
+    echo '<div class="col-md-7">';
+    echo '<div class="form_container">';
+    
+    
+     if (isset($_GET['submit'])) {
+         echo '<p style="color: green; font-size: 18px; font-weight: bold; padding: 10px; background-color: #e0ffe0; border: 2px solid green; border-radius: 5px; text-align: center;">Your form is submitted</p>';
+    
+  } else {
+    
+         echo '<form action="./contact.php" method="GET">';  
+        echo '<div>';
+
+   
+    
+
+   
+        // Loop through the forms to create input fields
+        foreach ($forms as $form) {
+            input($form['t'], $form['p'], $form['id']);
+        }
+        input('text', 'Message', ' ', 'message-box');
+        echo '</div>';
+        echo '<div class="btn_box">';
+        echo '<button type="submit" name="submit">SEND</button>';
+        echo '</div>';
+        echo '</form>';
+    }
+    
+    echo '</div>';
+    echo '</div>';
+    echo '<div class="col-md-5">';
+    echo '<div class="img-box">';
+    img('images/contact-img.jpg');
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</section>';
+}
+
+function about(){
+    echo '<section class="about_section layout_padding">';
+    echo '<div class="container">';
+    echo '<div class="row">';
+    echo '<div class="col-md-6">';
+    echo '<div class="img-box">';
+    
+    img('images/about-img.jpg');
+    
+    echo '</div>';
+    echo '</div>';
+    echo '<div class="col-md-6">';
+    echo '<div class="detail-box">';
+    echo '<div class="heading_container">';
+    h2WithSpan('About', 'Hospital', 'highlight', 'main-heading');
+    echo '</div>';
+    
+    p(' has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors');
+    
+    echo '<div class="btn_box">';
+    a('Read More', '#');
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</div>';
+    echo '</section>';
+    
+
+};
+
+// SLIDER FUNCTION
+
+function sliderSection($slides) {
+    echo '<section class="slider_section">';
+    echo '<div class="dot_design">';
+    echo '<img src="images/dots.png" alt="">';
+    echo '</div>';
+    echo '<div id="customCarousel1" class="carousel slide" data-ride="carousel">';
+    echo '<div class="carousel-inner">';
+
+    foreach ($slides as $index => $slide) {
+        $activeClass = $index === 0 ? 'active' : '';
+        echo '<div class="carousel-item ' . $activeClass . '">';
+        echo '<div class="container">';
+        echo '<div class="row">';
+        echo '<div class="col-md-6">';
+        echo '<div class="detail-box">';
+        echo '<div class="play_btn">';
+        echo '<button>';
+        echo '<i class="fa fa-play" aria-hidden="true"></i>';
+        echo '</button>';
+        echo '</div>';
+        echo '<h1>' . htmlspecialchars($slide['title']) . '<br>';
+        echo '<span>' . htmlspecialchars($slide['subtitle']) . '</span>';
+        echo '</h1>';
+        echo '<p>' . htmlspecialchars($slide['description']) . '</p>';
+        echo '<a href="' . htmlspecialchars($slide['link']) . '">Contact Us</a>';
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '<div class="col-md-6">';
+        echo '<div class="img-box">';
+        img('images/slider-img.jpg');
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '</div>'; 
+        echo '</div>'; 
+    }
+
+    echo '</div>'; 
+    echo '<div class="carousel_btn-box">';
+    echo '<a class="carousel-control-prev" href="#customCarousel1" role="button" data-slide="prev">';
+    echo '<img src="images/prev.png" alt="">';
+    echo '<span class="sr-only">Previous</span>';
+    echo '</a>';
+    echo '<a class="carousel-control-next" href="#customCarousel1" role="button" data-slide="next">';
+    echo '<img src="images/next.png" alt="">';
+    echo '<span class="sr-only">Next</span>';
+    echo '</a>';
+    echo '</div>'; 
+    echo '</div>'; 
+    echo '</section>';
+    
+};
+
+
+
+
