@@ -23,7 +23,15 @@ $navbar1 = [
     [
        'name' => 'Contact Us',
         'link' => './contact.php', 
-    ]
+    ],
+    [
+        'name' => 'Login',
+        'link' => './login.php',
+      ],
+      [
+        'name' => 'Sign up',
+        'link' => './signup.php',
+      ],
 ];
 
 
@@ -44,6 +52,10 @@ $footers = [
 $footers1 = [
   
     [
+    'name' => 'Home',
+    'link' => './index.php',
+    ]
+    ,[
        'name' => 'About',
     'link' => './about.php',
     ],
@@ -269,23 +281,20 @@ $doctors = [
           'subtitle' => 'Hospital',
           'description' => 'when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to',
           'link' => '#',
-          // 'image' => 'images/slider-img.jpg'
       ],
       [
           'title' => 'Another Slide',
           'subtitle' => 'Clinic',
-          // 'description' => 'This is another slide with different content.',
           'description' => 'when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to',
           'link' => '#',
-          // 'image' => 'images/another-img.jpg'
+         
       ],
       [
           'title' => 'Health Care',
           'subtitle' => 'Center',
           'description' => 'when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to',
-          // 'description' => 'Providing high-quality healthcare services.',
           'link' => '#',
-          // 'image' => 'images/healthcare-img.jpg'
+          
       ]
   ];
 
