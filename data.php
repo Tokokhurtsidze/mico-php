@@ -23,7 +23,15 @@ $navbar1 = [
     [
        'name' => 'Contact Us',
         'link' => './contact.php', 
-    ]
+    ],
+    [
+      'name' => 'Login',
+      'link' => './login.php',
+    ],
+    [
+      'name' => 'Sign up',
+      'link' => './signup.php',
+    ],
 ];
 
 
