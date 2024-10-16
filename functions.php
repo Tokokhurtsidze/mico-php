@@ -77,7 +77,7 @@ function h2WithSpan($text, $spanText, $spanClass = '', $h2Class = '') {
 // HEADER FUNCTION
 function setheader($navbar1) {
     echo '<div class="hero_area">';
-    echo '<header class="header_section">';
+    echo '<header class="header_section ">';
     echo '    <div class="header_top">';
     echo '        <div class="container">';
     echo '            <div class="contact_nav">';
@@ -89,7 +89,7 @@ function setheader($navbar1) {
     i('', 'fa fa-envelope', 'true');
     span(' Email : demo@gmail.com');
     echo '                </a>';
-     echo '                <a href="">';
+    echo '<a href="https://www.google.com/maps/place/37.7749,-122.4194" target="_blank" rel="noopener noreferrer">';
     i('', 'fa fa-map-marker', 'true');
     span('  Location');
     echo '                </a>';
@@ -166,6 +166,10 @@ echo '<div class="row info_main_row">';
 echo '<div class="col-md-6 col-lg-3">';
 h5('Address'); 
 echo '<div class="info_contact">';
+echo '<a href="https://www.google.com/maps/place/37.7749,-122.4194" target="_blank" rel="noopener noreferrer">';
+i('', 'fa fa-map-marker', 'true');
+span('  Location');
+echo '                </a>';
 foreach ($fonts as $font) {
     echo '<a href="">';
     i('', $font['class'], 'true'); 
@@ -512,7 +516,7 @@ function book() {
         $appointmentDate = $_POST['appointment_date'];
 
         
-        echo '<h4 style="text-align: center; margin-top: 200px;">Your reservation has been accepted</h4>';
+        echo '<h4 style="text-align: center; margin-top: 50px;">Your reservation has been accepted</h4>';
         echo '<img src="./images\check.jpg" style="width: 100px; margin-left: 600px;" alt="">';
         echo '<div class=reservationform style=" background-color: #00c6a9;  box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.25); margin: 50px 600px; padding: 10px; border-radius: 20px;" >';
         echo "<h4>Patient Information</h4>";

@@ -24,14 +24,14 @@ $navbar1 = [
        'name' => 'Contact Us',
         'link' => './contact.php', 
     ],
-    [
-        'name' => 'Login',
-        'link' => './login.php',
-      ],
-      [
-        'name' => 'Sign up',
-        'link' => './signup.php',
-      ],
+    // [
+    //     'name' => 'Login',
+    //     'link' => './login.php',
+    //   ],
+    //   [
+    //     'name' => 'Sign up',
+    //     'link' => './signup.php',
+    //   ],
 ];
 
 
@@ -105,9 +105,9 @@ $postboxes1 = [
    
 
 $fonts = [
-['class' => 'fa fa-map-marker',
-  'span' =>  'Location'
-],
+// ['class' => 'fa fa-map-marker',
+//   'span' =>  'Location',
+// ],
 ['class' => 'fa fa-phone',
   'span' =>  ' Call +01 1234567890'
 ],

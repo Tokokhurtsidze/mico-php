@@ -1,5 +1,6 @@
 <?php
 include('functions.php');
+include('data.php');
 ?>
 
 
@@ -42,7 +43,14 @@ include('functions.php');
 
 </head>
 <body>
+  <?php
+setheader($navbar1)
+  ?>
     <?php
         book();
+    ?>
+
+    <?php
+   setfooter($fonts,$footers,$footers1,$postboxes,$postboxes1 )
     ?>
 </body>
